@@ -4,7 +4,7 @@ class CategoryBox extends Component {
     render() {
         const { name, number_of_posts } = this.props;
         return (
-            <div className="col-lg-3 col-md-6">
+            <div className="col-lg-3 col-md-6" key={name}>
                 <div className="panel panel-primary">
                     <div className="panel-heading">
                         <div className="row">

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Post from '../post';
 
 class BoxHeader extends Component {
     render() {
-        const { title } = this.props;
+        const { title, orderBy } = this.props;
         return (
             <div className="panel-heading">
                 <i className="fa fa-comment fa-fw"></i> {title}
@@ -14,12 +13,10 @@ class BoxHeader extends Component {
                                         <span className="caret"></span>
                         </button>
                         <ul className="dropdown-menu pull-right" role="menu">
-                            <li><a href="#">Action</a>
-                            </li>
-                            <li><a href="#">Another action</a>
-                            </li>
-                            <li><a href="#">Something else here</a>
-                            </li>
+                            {orderBy.map((order) => (
+                                <li key={order.value}><a href="#">{order.text}</a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>

@@ -4,9 +4,16 @@ import BoxHeader from '../boxHeader';
 
 class PostBox extends Component {
     render() {
+        const orderBy = [{
+            "text": "Category",
+            "value": "category"
+        }, {
+            "text": "Most recent",
+            "value": "createdAt"
+        }];
         return (
             <div className="chat-panel panel panel-default">
-                <BoxHeader title="Posts" />
+                <BoxHeader title="Posts" orderBy={orderBy} />
 
                 <div className="panel-body">
                     <Posts />

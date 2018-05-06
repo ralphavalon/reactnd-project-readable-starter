@@ -3,9 +3,9 @@ import React, { Component } from 'react';
 class Post extends Component {
     render() {
         const { author, title, voteScore, createdAt } = this.props;
-        console.log(this.props);
+        
         return (
-            <li className="left clearfix">
+            <li className="left clearfix" >
                 <span className="chat-img pull-left">
                     <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" className="img-circle" />
                 </span>
