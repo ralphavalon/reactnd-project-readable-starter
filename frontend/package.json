@@ -6,6 +6,7 @@
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-scripts": "1.1.4",
+    "sort-by": "^1.2.0",
     "startbootstrap-sb-admin-2": "^3.3.7"
   },
   "scripts": {

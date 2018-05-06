@@ -10,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div id="wrapper">
-        <nav className="navbar navbar-default navbar-static-top" role="navigation" style={{ marginBottom: 0 }}>
+        <nav className="navbar navbar-default navbar-static-top" style={{ marginBottom: 0 }}>
           <Header />
           <Sidebar />
         </nav>
