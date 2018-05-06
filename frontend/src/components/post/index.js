@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class Post extends Component {
     render() {
@@ -20,7 +21,7 @@ class Post extends Component {
                         Created by {author}
                     </p>
                     <small className="pull-right text-muted">
-                        <i className="fa fa-clock-o fa-fw"></i> {createdAt}
+                        <i className="fa fa-clock-o fa-fw"></i> {moment(createdAt).fromNow()}
                     </small>
                 </div>
             </li>

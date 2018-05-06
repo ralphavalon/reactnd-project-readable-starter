@@ -18,12 +18,82 @@ class PostBox extends Component {
             commentCount: 2
         },{
             id: '8xf0y6ziyjabvozdd253nd2',
-            timestamp: 1467166872654,
+            timestamp: 1525631551545,
             title: 'Udacity is awesome',
             body: 'Everyone says so after all.',
             author: 'thingtwo',
             category: 'redux',
             voteScore: 4,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd3',
+            timestamp: 1467166872644,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 2,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd3',
+            timestamp: 1467166872644,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 2,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd3',
+            timestamp: 1467166872644,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 2,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd3',
+            timestamp: 1467166872644,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 2,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd3',
+            timestamp: 1467166872644,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 2,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd3',
+            timestamp: 1467166872644,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 2,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd3',
+            timestamp: 1467166872644,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 2,
             deleted: false,
             commentCount: 2
         },{
@@ -63,7 +133,7 @@ class PostBox extends Component {
             "value": "-voteScore"
         }, {
             "text": "Most recent",
-            "value": "timestamp"
+            "value": "-timestamp"
         }];
         return (
             <div className="chat-panel panel panel-default">
@@ -83,6 +153,17 @@ class PostBox extends Component {
                                 createdAt={post.timestamp} />
                         ))}
                     </ul>
+                </div>
+
+                <div className="panel-footer">
+                    <div className="input-group">
+                        <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." />
+                        <span className="input-group-btn">
+                            <button className="btn btn-warning btn-sm" id="btn-chat">
+                                Send
+                            </button>
+                        </span>
+                    </div>
                 </div>
             </div>
         );
