@@ -128,7 +128,7 @@ class PostBox extends Component {
             showingPosts = showingPosts.filter((post) => post.category === category);
         }
 
-        const orderBy = [{
+        const orderOptions = [{
             "text": "Category",
             "value": "category"
         }, {
@@ -143,7 +143,7 @@ class PostBox extends Component {
         }];
         return (
             <div className="chat-panel panel panel-default">
-                <BoxHeader title="Posts" orderBy={orderBy} onOrderClick={this.onOrderClick} />
+                <BoxHeader title="Posts" orderOptions={orderOptions} selectedOrder={orderField} onOrderClick={this.onOrderClick} />
 
                 <div className="panel-body">
                     <ul className="chat">

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class BoxHeader extends Component {
     render() {
-        const { title, orderBy, onOrderClick } = this.props;
+        const { title, selectedOrder, orderOptions, onOrderClick } = this.props;
         return (
             <div className="panel-heading">
                 <i className="fa fa-comment fa-fw"></i> {title}
@@ -13,8 +13,8 @@ class BoxHeader extends Component {
                             <span className="caret"></span>
                         </button>
                         <ul className="dropdown-menu pull-right" role="menu">
-                            {orderBy.map((order) => (
-                                <li key={order.value} onClick={() => onOrderClick(order.value)}><a>{order.text}</a>
+                            {orderOptions.map((order) => (
+                                <li key={order.value} onClick={() => onOrderClick(order.value)}><a>{ order.value === selectedOrder && <i className="fa fa-check"></i> } {order.text}</a>
                                 </li>
                             ))}
                         </ul>
