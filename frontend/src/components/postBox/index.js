@@ -37,7 +37,7 @@ class PostBox extends Component {
             deleted: false,
             commentCount: 2
         },{
-            id: '8xf0y6ziyjabvozdd253nd3',
+            id: '8xf0y6ziyjabvozdd253nd4',
             timestamp: 1467166872644,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
@@ -47,7 +47,27 @@ class PostBox extends Component {
             deleted: false,
             commentCount: 2
         },{
-            id: '8xf0y6ziyjabvozdd253nd3',
+            id: '8xf0y6ziyjabvozdd253nd5',
+            timestamp: 1525631551505,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingone',
+            category: 'udacity',
+            voteScore: 1,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253n23',
+            timestamp: 1525631552545,
+            title: 'I really love Udacity',
+            body: 'Everyone says so after all.',
+            author: 'thingtwo',
+            category: 'udacity',
+            voteScore: 3,
+            deleted: false,
+            commentCount: 2
+        },{
+            id: '8xf0y6ziyjabvozdd253nd6',
             timestamp: 1467166872644,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
@@ -57,7 +77,7 @@ class PostBox extends Component {
             deleted: false,
             commentCount: 2
         },{
-            id: '8xf0y6ziyjabvozdd253nd3',
+            id: '8xf0y6ziyjabvozdd253nd7',
             timestamp: 1467166872644,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
@@ -67,7 +87,7 @@ class PostBox extends Component {
             deleted: false,
             commentCount: 2
         },{
-            id: '8xf0y6ziyjabvozdd253nd3',
+            id: '8xf0y6ziyjabvozdd253nd8',
             timestamp: 1467166872644,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
@@ -77,27 +97,7 @@ class PostBox extends Component {
             deleted: false,
             commentCount: 2
         },{
-            id: '8xf0y6ziyjabvozdd253nd3',
-            timestamp: 1467166872644,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd3',
-            timestamp: 1467166872644,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd3',
+            id: '8xf0y6ziyjabvozdd253nd9',
             timestamp: 1467166872644,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
@@ -115,11 +115,17 @@ class PostBox extends Component {
 
     render() {
         const { orderField, posts } = this.state;
+        const { category } = this.props;
         let showingPosts
+
         if (orderField) {
             showingPosts = posts.sort(sortBy(orderField));
         } else {
             showingPosts = posts
+        }
+
+        if (category) {
+            showingPosts = showingPosts.filter((post) => post.category === category);
         }
 
         const orderBy = [{
