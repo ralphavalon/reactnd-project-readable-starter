@@ -22,6 +22,10 @@ class Category extends Component {
           </div>
 
           <div className="row">
+            <CategoryBoxes />
+          </div>
+
+          <div className="row">
             <PostBox category={title} />
           </div>
         </div>
