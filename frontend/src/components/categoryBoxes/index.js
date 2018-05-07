@@ -4,7 +4,7 @@ import CategoryBox from '../categoryBox';
 class CategoryBoxes extends Component {
     state = {
         categories: [{
-            "name": "React",
+            "name": "react",
             "number_of_posts": 26
         }]
     }
@@ -13,6 +13,8 @@ class CategoryBoxes extends Component {
         const { categories } = this.state;
         return (
             <div>
+                <CategoryBox number_of_posts="26" key="all" />
+
                 {categories.map((category) => (
                     <CategoryBox name={category.name} number_of_posts={category.number_of_posts} key={category.name}/>
                 ))}

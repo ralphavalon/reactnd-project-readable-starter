@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import HeaderText from './components/headerText';
-import CategoryBoxes from './components/categoryBoxes';
-import PostBox from './components/postBox';
+import { Route } from 'react-router-dom';
 import Category from './pages/Category';
 import Header from './pages/components/header';
 import Sidebar from './pages/components/sidebar';
 import './App.css';
+import AllCategories from './pages/AllCategories';
 
 class App extends Component {
   render() {
@@ -17,17 +16,11 @@ class App extends Component {
         </nav>
 
         <div id="page-wrapper">
-          <div className="row">
-            <HeaderText title="Categories" />
-          </div>
-
-          <div className="row">
-            <CategoryBoxes />
-          </div>
-
-          <div className="row">
-            <PostBox />
-          </div>
+          <Route exact path="/" render={() => (
+            <AllCategories />
+          )} />
+          <Route exact path='/category/:path' component={Category} />
+          
         </div>
       </div>
     );
