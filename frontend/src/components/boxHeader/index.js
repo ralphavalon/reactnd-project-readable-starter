@@ -6,7 +6,7 @@ class BoxHeader extends Component {
         return (
             <div className="panel-heading">
                 <i className="fa fa-comment fa-fw"></i> {title}
-                <div className="pull-right">
+                {orderOptions && <div className="pull-right">
                     <div className="btn-group">
                         <button type="button" className="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             Order by
@@ -19,7 +19,7 @@ class BoxHeader extends Component {
                             ))}
                         </ul>
                     </div>
-                </div>
+                </div>}
             </div>
         );
     }

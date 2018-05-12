@@ -28,3 +28,11 @@
 .negative-vote-score {
     color: #CD5C5C;
 }
+
+.comment-header {
+    width: 20% !important;
+}
+
+.comment-body {
+    width: 80% !important;
+}
