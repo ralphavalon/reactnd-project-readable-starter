@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import Category from './pages/Category';
+import PostPage from './pages/PostPage';
 import Header from './pages/components/header';
 import Sidebar from './pages/components/sidebar';
 import './App.css';
@@ -20,6 +21,7 @@ class App extends Component {
             <AllCategories />
           )} />
           <Route exact path='/category/:path' component={Category} />
+          <Route exact path='/post/:path' component={PostPage} />
           
         </div>
       </div>
