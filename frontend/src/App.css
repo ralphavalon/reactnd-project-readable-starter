@@ -1,3 +1,36 @@
 @import '../node_modules/startbootstrap-sb-admin-2/vendor/bootstrap/css/bootstrap.css';
 @import '../node_modules/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css';
 @import '../node_modules/startbootstrap-sb-admin-2/vendor/font-awesome/css/font-awesome.min.css';
+
+.fa-chevron-up:hover{
+    color: #D2691E;
+}
+
+.fa-chevron-down:hover{
+    color: #D2691E;
+}
+
+.vote-score {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.positive-vote-score {
+    color: #228B22;
+}
+
+.positive-vote-score::before {
+    content: " ";
+}
+
+.neutral-vote-score {
+    color: #777777;
+}
+
+.neutral-vote-score::before {
+    content: " ";
+}
+
+.negative-vote-score {
+    color: #CD5C5C;
+}

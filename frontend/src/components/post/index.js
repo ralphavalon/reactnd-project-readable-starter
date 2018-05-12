@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import VoteScore from '../voteScore';
 
 class Post extends Component {
     render() {
-        const { id, author, title, category, voteScore, createdAt } = this.props;
+        const { id, author, title, category, voteScore, createdAt, onUpVote, onDownVote } = this.props;
 
         return (
             <li className="left clearfix" >
@@ -17,9 +18,7 @@ class Post extends Component {
                         <Link to={`/post/${id}`} style={{ textDecoration: 'none' }}>
                             <strong className="primary-font">[{category}] - {title}</strong>
                         </Link>
-                        <small className="pull-right text-muted">
-                            <i className="fa fa-chevron-up fa-fw"></i> {voteScore}
-                        </small>
+                        <VoteScore voteScore={voteScore} onUpVote={onUpVote} onDownVote={onDownVote} />
                     </div>
                     <p>
                         Created by {author}

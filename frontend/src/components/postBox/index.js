@@ -109,6 +109,16 @@ class PostBox extends Component {
         }]
     }
 
+    onUpVote = (post) => {
+        post.voteScore++;
+        this.setState({posts: this.state.posts.filter((p) => p.id !== post.id).concat([post])})
+    }
+
+    onDownVote = (post) => {
+        post.voteScore--;
+        this.setState({posts: this.state.posts.filter((p) => p.id !== post.id).concat([post])})
+    }
+
     onOrderClick = (field) => {
         this.setState({ orderField: field })
     }
@@ -121,7 +131,7 @@ class PostBox extends Component {
         if (orderField) {
             showingPosts = posts.sort(sortBy(orderField));
         } else {
-            showingPosts = posts
+            showingPosts = posts.sort(sortBy('-timestamp'));
         }
 
         if (category) {
@@ -156,7 +166,9 @@ class PostBox extends Component {
                                 category={post.category}
                                 voteScore={post.voteScore}
                                 deleted={post.deleted}
-                                createdAt={post.timestamp} />
+                                createdAt={post.timestamp}
+                                onUpVote={() => this.onUpVote(post)}
+                                onDownVote={() => this.onDownVote(post)} />
                         ))}
                     </ul>
                 </div>

@@ -27,6 +27,16 @@ class CommentBox extends Component {
           }]
     }
 
+    onUpVote = (comment) => {
+        comment.voteScore++;
+        this.setState({comments: this.state.comments.filter((c) => c.id !== comment.id).concat([comment])})
+    }
+
+    onDownVote = (comment) => {
+        comment.voteScore--;
+        this.setState({comments: this.state.comments.filter((c) => c.id !== comment.id).concat([comment])})
+    }
+
     onOrderClick = (field) => {
         this.setState({ orderField: field })
     }
@@ -34,13 +44,8 @@ class CommentBox extends Component {
     render() {
         const { orderField, comments } = this.state;
         const { post } = this.props;
-        let showingComments
-
-        if (orderField) {
-            showingComments = comments.sort(sortBy(orderField));
-        } else {
-            showingComments = comments
-        }
+        
+        let showingComments = comments.sort(sortBy('timestamp'));
 
         if (post) {
             showingComments = showingComments.filter((comment) => comment.parentId === post);
@@ -74,7 +79,9 @@ class CommentBox extends Component {
                                 category={comment.category}
                                 voteScore={comment.voteScore}
                                 deleted={comment.deleted}
-                                createdAt={comment.timestamp} />
+                                createdAt={comment.timestamp} 
+                                onUpVote={() => this.onUpVote(comment)}
+                                onDownVote={() => this.onDownVote(comment)} />
                         ))}
                     </ul>
                 </div>
