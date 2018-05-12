@@ -19,16 +19,8 @@
     color: #228B22;
 }
 
-.positive-vote-score::before {
-    content: " ";
-}
-
 .neutral-vote-score {
     color: #777777;
-}
-
-.neutral-vote-score::before {
-    content: " ";
 }
 
 .negative-vote-score {
