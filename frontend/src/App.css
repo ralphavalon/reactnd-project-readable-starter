@@ -4,10 +4,12 @@
 
 .fa-chevron-up:hover{
     color: #D2691E;
+    cursor: pointer;
 }
 
 .fa-chevron-down:hover{
     color: #D2691E;
+    cursor: pointer;
 }
 
 .vote-score {
