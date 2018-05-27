@@ -1,27 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import CategoryBox from '../categoryBox';
 
 class CategoryBoxes extends Component {
-    state = {
-        categories: [{
-            "name": "react",
-            "number_of_posts": 26
-        }]
-    }
-
     render() {
-        const { categories } = this.state;
+        const { categories = [] } = this.props;
         return (
             <div>
                 <CategoryBox number_of_posts="26" key="all" />
 
                 {categories.map((category) => (
-                    <CategoryBox name={category.name} number_of_posts={category.number_of_posts} key={category.name}/>
+                    <CategoryBox name={category.name} number_of_posts={category.number_of_posts} key={category.name} />
                 ))}
-                
+
             </div>
         );
     }
 }
 
-export default CategoryBoxes;
+const mapStateToProps = ({ category }) => ({
+    categories: category.categories
+});
+
+export default connect(
+    mapStateToProps
+)(CategoryBoxes);
