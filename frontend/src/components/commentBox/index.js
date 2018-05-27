@@ -1,32 +1,12 @@
 import React, { Component } from 'react';
-import Comment from '../comment';
-import BoxHeader from '../boxHeader';
+import { connect } from 'react-redux';
 import sortBy from 'sort-by';
 import serializeForm from 'form-serialize';
+import Comment from '../comment';
+import BoxHeader from '../boxHeader';
+import { addComment } from '../../actions';
 
 class CommentBox extends Component {
-    state = {
-        comments: [{
-            id: '894tuq4ut84ut8v4t8wun89g',
-            parentId: "8xf0y6ziyjabvozdd253nd",
-            timestamp: 1468166872634,
-            body: 'Hi there! I am a COMMENT.',
-            author: 'thingtwo',
-            voteScore: 6,
-            deleted: false,
-            parentDeleted: false
-        }, {
-            id: '8tu4bsun805n8un48ve89',
-            parentId: "8xf0y6ziyjabvozdd253nd",
-            timestamp: 1469479767190,
-            body: 'Comments. Are. Cool.',
-            author: 'thingone',
-            voteScore: -5,
-            deleted: false,
-            parentDeleted: false
-        }]
-    }
-
     onUpVote = (comment) => {
         comment.voteScore++;
         this.setState({ comments: this.state.comments.filter((c) => c.id !== comment.id).concat([comment]) })
@@ -37,20 +17,8 @@ class CommentBox extends Component {
         this.setState({ comments: this.state.comments.filter((c) => c.id !== comment.id).concat([comment]) })
     }
 
-    addComment = (e) => {
-        e.preventDefault();
-        const comment = serializeForm(e.target, { hash: true });
-        comment.id = Math.random() * 1000;
-        comment.timestamp = Number(new Date());
-        comment.parentId = "8xf0y6ziyjabvozdd253nd";
-        comment.voteScore = 0;
-        this.setState({ comments: this.state.comments.concat([comment]) })
-        e.target.reset();
-    }
-
     render() {
-        const { comments } = this.state;
-        const { post } = this.props;
+        const { comments, post, onNewComment } = this.props;
 
         let showingComments = comments.sort(sortBy('timestamp'));
 
@@ -81,7 +49,12 @@ class CommentBox extends Component {
                 </div>
 
                 <div className="panel-footer">
-                    <form onSubmit={this.addComment} className="input-group">
+                    <form onSubmit={(e) => {
+                        e.preventDefault();
+                        const comment = serializeForm(e.target, { hash: true });
+                        onNewComment(comment);
+                        e.target.reset();
+                    }} className="input-group">
                         <input id="btn-input" type="text" name="author" className="form-control input-sm comment-header" placeholder="Type your username here..." />
                         <input id="btn-input" type="text" name="body" className="form-control input-sm comment-body" placeholder="Type your message here..." />
                         <span className="input-group-btn">
@@ -96,4 +69,17 @@ class CommentBox extends Component {
     }
 }
 
-export default CommentBox;
+const mapStateToProps = ({ comment }) => ({
+    comments: comment.comments
+});
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onNewComment: (data) => dispatch(addComment(data))
+    }
+  }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(CommentBox);
