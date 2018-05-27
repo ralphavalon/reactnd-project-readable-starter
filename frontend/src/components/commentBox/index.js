@@ -45,6 +45,7 @@ class CommentBox extends Component {
         comment.parentId = "8xf0y6ziyjabvozdd253nd";
         comment.voteScore = 0;
         this.setState({ comments: this.state.comments.concat([comment]) })
+        e.target.reset();
     }
 
     render() {

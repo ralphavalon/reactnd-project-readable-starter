@@ -36,3 +36,13 @@
 .comment-body {
     width: 80% !important;
 }
+
+.comment-author {
+    font-size: 75%;
+}
+
+.comment-author-area {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    width: 6%;
+}
