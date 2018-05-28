@@ -4,21 +4,12 @@ import sortBy from 'sort-by';
 import serializeForm from 'form-serialize';
 import Comment from '../comment';
 import BoxHeader from '../boxHeader';
-import { addComment } from '../../actions';
+import { addComment, upvoteComment, downvoteComment } from '../../actions';
 
 class CommentBox extends Component {
-    onUpVote = (comment) => {
-        comment.voteScore++;
-        this.setState({ comments: this.state.comments.filter((c) => c.id !== comment.id).concat([comment]) })
-    }
-
-    onDownVote = (comment) => {
-        comment.voteScore--;
-        this.setState({ comments: this.state.comments.filter((c) => c.id !== comment.id).concat([comment]) })
-    }
 
     render() {
-        const { comments, post, onNewComment } = this.props;
+        const { comments, post, onNewComment, onDownvoteComment, onUpvoteComment } = this.props;
 
         let showingComments = comments.sort(sortBy('timestamp'));
 
@@ -42,8 +33,8 @@ class CommentBox extends Component {
                                 voteScore={comment.voteScore}
                                 deleted={comment.deleted}
                                 createdAt={comment.timestamp}
-                                onUpVote={() => this.onUpVote(comment)}
-                                onDownVote={() => this.onDownVote(comment)} />
+                                onUpVote={() => onUpvoteComment(comment)}
+                                onDownVote={() => onDownvoteComment(comment)} />
                         ))}
                     </ul>
                 </div>
@@ -75,7 +66,9 @@ const mapStateToProps = ({ comment }) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onNewComment: (data) => dispatch(addComment(data))
+        onNewComment: (data) => dispatch(addComment(data)),
+        onUpvoteComment: (data) => dispatch(upvoteComment(data)),
+        onDownvoteComment: (data) => dispatch(downvoteComment(data))
     }
   }
 

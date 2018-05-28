@@ -52,15 +52,15 @@ const category = (state = initialCategoryState, action) => {
 const comment = (state = initialCommentState, action) => {
     switch (action.type) {
         case types.ADD_COMMENT:
-            const { comment } = action;
-            comment.id = Math.random() * 1000;
-            comment.timestamp = Number(new Date());
-            comment.parentId = "8xf0y6ziyjabvozdd253nd";
-            comment.voteScore = 0;
-            
             return {
                 ...state,
-                'comments': state.comments.filter((c) => c.id !== comment.id).concat([comment])
+                comments: [...state.comments, action.comment]
+            }
+        case types.UPDATE_COMMENT:
+            console.log(state.comments.filter((c) => c.id !== action.comment.id).concat([action.comment]));
+            return {
+                ...state,
+                comments: state.comments.filter((c) => c.id !== action.comment.id).concat([action.comment])
             }
         default:
             return state;
