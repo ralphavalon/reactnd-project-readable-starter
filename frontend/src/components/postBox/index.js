@@ -38,7 +38,7 @@ class PostBox extends Component {
             commentCount: 2
         },{
             id: '8xf0y6ziyjabvozdd253nd4',
-            timestamp: 1467166872644,
+            timestamp: 1467166872944,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
             author: 'thingtwo',
@@ -68,7 +68,7 @@ class PostBox extends Component {
             commentCount: 2
         },{
             id: '8xf0y6ziyjabvozdd253nd6',
-            timestamp: 1467166872644,
+            timestamp: 1467166872694,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
             author: 'thingtwo',
@@ -78,7 +78,7 @@ class PostBox extends Component {
             commentCount: 2
         },{
             id: '8xf0y6ziyjabvozdd253nd7',
-            timestamp: 1467166872644,
+            timestamp: 1467166878643,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
             author: 'thingtwo',
@@ -88,7 +88,7 @@ class PostBox extends Component {
             commentCount: 2
         },{
             id: '8xf0y6ziyjabvozdd253nd8',
-            timestamp: 1467166872644,
+            timestamp: 1467166882733,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
             author: 'thingtwo',
@@ -98,7 +98,7 @@ class PostBox extends Component {
             commentCount: 2
         },{
             id: '8xf0y6ziyjabvozdd253nd9',
-            timestamp: 1467166872644,
+            timestamp: 1467167872677,
             title: 'I really love Udacity',
             body: 'Everyone says so after all.',
             author: 'thingtwo',
