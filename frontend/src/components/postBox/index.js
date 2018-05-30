@@ -1,122 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import sortBy from 'sort-by';
 import Post from '../post';
 import BoxHeader from '../boxHeader';
-import sortBy from 'sort-by';
+import { upvotePost, downvotePost } from '../../actions';
 
 class PostBox extends Component {
     state = {
-        orderField: '',
-        posts: [{
-            id: '8xf0y6ziyjabvozdd253nd',
-            timestamp: 1467166872634,
-            title: 'Udacity is the best place to learn React',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'react',
-            voteScore: 6,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd2',
-            timestamp: 1525631551545,
-            title: 'Udacity is awesome',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'redux',
-            voteScore: 4,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd3',
-            timestamp: 1467166872644,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd4',
-            timestamp: 1467166872944,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd5',
-            timestamp: 1525631551505,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingone',
-            category: 'udacity',
-            voteScore: 1,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253n23',
-            timestamp: 1525631552545,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 3,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd6',
-            timestamp: 1467166872694,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd7',
-            timestamp: 1467166878643,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd8',
-            timestamp: 1467166882733,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        },{
-            id: '8xf0y6ziyjabvozdd253nd9',
-            timestamp: 1467167872677,
-            title: 'I really love Udacity',
-            body: 'Everyone says so after all.',
-            author: 'thingtwo',
-            category: 'udacity',
-            voteScore: 2,
-            deleted: false,
-            commentCount: 2
-        }]
-    }
-
-    onUpVote = (post) => {
-        post.voteScore++;
-        this.setState({posts: this.state.posts.filter((p) => p.id !== post.id).concat([post])})
-    }
-
-    onDownVote = (post) => {
-        post.voteScore--;
-        this.setState({posts: this.state.posts.filter((p) => p.id !== post.id).concat([post])})
+        orderField: ''
     }
 
     onOrderClick = (field) => {
@@ -124,8 +15,8 @@ class PostBox extends Component {
     }
 
     render() {
-        const { orderField, posts } = this.state;
-        const { category } = this.props;
+        const { orderField } = this.state;
+        const { category, posts, onUpvotePost, onDownvotePost } = this.props;
         let showingPosts
 
         if (orderField) {
@@ -167,8 +58,8 @@ class PostBox extends Component {
                                 voteScore={post.voteScore}
                                 deleted={post.deleted}
                                 createdAt={post.timestamp}
-                                onUpVote={() => this.onUpVote(post)}
-                                onDownVote={() => this.onDownVote(post)} />
+                                onUpVote={() => onUpvotePost(post)}
+                                onDownVote={() => onDownvotePost(post)} />
                         ))}
                     </ul>
                 </div>
@@ -188,4 +79,18 @@ class PostBox extends Component {
     }
 }
 
-export default PostBox;
+const mapStateToProps = ({ post }) => ({
+    posts: post.posts
+});
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onUpvotePost: (data) => dispatch(upvotePost(data)),
+        onDownvotePost: (data) => dispatch(downvotePost(data))
+    }
+  }
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PostBox);

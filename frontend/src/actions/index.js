@@ -1,4 +1,5 @@
 export const ADD_POST = 'ADD_POST'
+export const UPDATE_POST = 'UPDATE_POST'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 
@@ -30,5 +31,21 @@ export function downvoteComment(comment) {
   return {
     type: UPDATE_COMMENT,
     comment,
+  }
+}
+
+export function upvotePost(post) {
+  post.voteScore = upvoteScore(post);
+  return {
+    type: UPDATE_POST,
+    post,
+  }
+}
+
+export function downvotePost(post) {
+  post.voteScore = downvoteScore(post);
+  return {
+    type: UPDATE_POST,
+    post,
   }
 }

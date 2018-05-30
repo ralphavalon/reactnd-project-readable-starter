@@ -30,13 +30,122 @@ const initialCommentState = {
     }]
 }
 
-const post = (state = {}, action) => {
+const initialPostState = {
+    posts: [{
+        id: '8xf0y6ziyjabvozdd253nd',
+        timestamp: 1467166872634,
+        title: 'Udacity is the best place to learn React',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'react',
+        voteScore: 6,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd2',
+        timestamp: 1525631551545,
+        title: 'Udacity is awesome',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'redux',
+        voteScore: 4,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd3',
+        timestamp: 1467166872644,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'udacity',
+        voteScore: 2,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd4',
+        timestamp: 1467166872944,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'udacity',
+        voteScore: 2,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd5',
+        timestamp: 1525631551505,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingone',
+        category: 'udacity',
+        voteScore: 1,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253n23',
+        timestamp: 1525631552545,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'udacity',
+        voteScore: 3,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd6',
+        timestamp: 1467166872694,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'udacity',
+        voteScore: 2,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd7',
+        timestamp: 1467166878643,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'udacity',
+        voteScore: 2,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd8',
+        timestamp: 1467166882733,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'udacity',
+        voteScore: 2,
+        deleted: false,
+        commentCount: 2
+    },{
+        id: '8xf0y6ziyjabvozdd253nd9',
+        timestamp: 1467167872677,
+        title: 'I really love Udacity',
+        body: 'Everyone says so after all.',
+        author: 'thingtwo',
+        category: 'udacity',
+        voteScore: 2,
+        deleted: false,
+        commentCount: 2
+    }]
+}
+
+const post = (state = initialPostState, action) => {
     switch (action.type) {
         case types.ADD_POST:
             return {
                 ...state,
-                newValue: action.newValue
+                posts: [...state.posts, action.post]
             };
+        case types.UPDATE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter((p) => p.id !== action.post.id).concat([action.post])
+            }
         default:
             return state;
     }
@@ -57,7 +166,6 @@ const comment = (state = initialCommentState, action) => {
                 comments: [...state.comments, action.comment]
             }
         case types.UPDATE_COMMENT:
-            console.log(state.comments.filter((c) => c.id !== action.comment.id).concat([action.comment]));
             return {
                 ...state,
                 comments: state.comments.filter((c) => c.id !== action.comment.id).concat([action.comment])
