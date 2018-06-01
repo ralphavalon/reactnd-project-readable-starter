@@ -5,7 +5,7 @@ import VoteScore from '../voteScore';
 
 class Post extends Component {
     render() {
-        const { id, author, title, category, commentCount, voteScore, createdAt, onUpVote, onDownVote } = this.props;
+        const { id, author, title, category, commentCount = 0, voteScore, createdAt, onUpVote, onDownVote } = this.props;
 
         return (
             <li className="left clearfix" >

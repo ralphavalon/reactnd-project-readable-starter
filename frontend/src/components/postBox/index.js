@@ -66,13 +66,10 @@ class PostBox extends Component {
                 </div>
 
                 <div className="panel-footer">
-                    <div className="input-group">
-                        <input id="btn-input" type="text" className="form-control input-sm" placeholder="Type your message here..." />
-                        <span className="input-group-btn">
-                            <button className="btn btn-warning btn-sm" id="btn-chat">
-                                Send
-                            </button>
-                        </span>
+                    <div className="row">
+                        <div className="add pull-right">
+                            <i className="fa fa-plus-circle fa-5x"></i>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -17,6 +17,15 @@
     font-weight: bold;
 }
 
+.add {
+    color: #228BFF;
+    padding-right: 10px;
+}
+
+.add:hover {
+    cursor: pointer;
+}
+
 .positive-vote-score {
     color: #228B22;
 }
