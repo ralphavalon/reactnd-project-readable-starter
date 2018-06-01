@@ -50,7 +50,7 @@ const initialPostState = {
         category: 'redux',
         voteScore: 4,
         deleted: false,
-        commentCount: 2
+        commentCount: 0
     },{
         id: '8xf0y6ziyjabvozdd253nd3',
         timestamp: 1467166872644,

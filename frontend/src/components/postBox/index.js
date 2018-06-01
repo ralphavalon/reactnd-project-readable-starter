@@ -56,6 +56,7 @@ class PostBox extends Component {
                                 title={post.title}
                                 category={post.category}
                                 voteScore={post.voteScore}
+                                commentCount={post.commentCount}
                                 deleted={post.deleted}
                                 createdAt={post.timestamp}
                                 onUpVote={() => onUpvotePost(post)}

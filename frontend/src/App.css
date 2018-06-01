@@ -37,11 +37,11 @@
     width: 80% !important;
 }
 
-.comment-author {
+.author {
     font-size: 75%;
 }
 
-.comment-author-area {
+.author-area {
     word-wrap: break-word;
     overflow-wrap: break-word;
     width: 6%;
