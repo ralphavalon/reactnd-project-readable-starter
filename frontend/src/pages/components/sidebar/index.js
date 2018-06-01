@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
     render() {
@@ -17,7 +18,9 @@ class Sidebar extends Component {
                             </div>
                         </li>
                         <li>
-                            <a href="index.html"><i className="fa fa-comment fa-fw"></i> Categories</a>
+                            <Link to="/">
+                                <i className="fa fa-comment fa-fw"></i> Categories
+                            </Link>
                         </li>
                     </ul>
                 </div>
