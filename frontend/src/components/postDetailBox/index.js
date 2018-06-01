@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BoxHeader from '../boxHeader';
 import Comment from '../comment';
-import { upvotePost, downvotePost } from '../../actions';
 
 class PostDetailBox extends Component {
 
@@ -33,14 +32,4 @@ class PostDetailBox extends Component {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onUpvotePost: (data) => dispatch(upvotePost(data)),
-        onDownvotePost: (data) => dispatch(downvotePost(data))
-    }
-}
-
-export default connect(
-    null,
-    mapDispatchToProps
-)(PostDetailBox);
+export default PostDetailBox;
