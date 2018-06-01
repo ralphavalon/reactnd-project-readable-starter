@@ -18,6 +18,19 @@ export function addComment(comment) {
   }
 }
 
+export function addPost(post) {
+  post.id = Math.random() * 1000;
+  post.timestamp = Number(new Date());
+  post.voteScore = 0;
+  post.deleted = false;
+  post.commentCount = 0;
+
+  return {
+    type: ADD_POST,
+    post,
+  }
+}
+
 export function upvoteComment(comment) {
   comment.voteScore = upvoteScore(comment);
   return {

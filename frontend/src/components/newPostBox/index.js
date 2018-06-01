@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import serializeForm from 'form-serialize';
+import { addPost } from '../../actions';
+import { withRouter } from 'react-router-dom';
 
 class NewPostBox extends Component {
 
     render() {
-        const { categories = [] } = this.props;
+        const { categories = [], onNewPost, history } = this.props;
         return (
             <form onSubmit={(e) => {
                 e.preventDefault();
                 const post = serializeForm(e.target, { hash: true });
-                console.log(post);
+                onNewPost(post);
                 e.target.reset();
+                history.push("/");
             }}>
 
                 <div className="form-group">
@@ -25,7 +28,7 @@ class NewPostBox extends Component {
 
                 <div className="form-group">
                     <label>Name</label>
-                    <input className="form-control" name="name" placeholder="Your name" />
+                    <input className="form-control" name="author" placeholder="Your name" />
                 </div>
 
                 <div className="form-group">
@@ -49,6 +52,13 @@ const mapStateToProps = ({ category }) => ({
     categories: category.categories
 });
 
-export default connect(
-    mapStateToProps
-)(NewPostBox);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onNewPost: (data) => dispatch(addPost(data))
+    }
+}
+
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(NewPostBox));
