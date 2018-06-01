@@ -43,7 +43,7 @@ class CommentBox extends Component {
                     <form onSubmit={(e) => {
                         e.preventDefault();
                         const comment = serializeForm(e.target, { hash: true });
-                        onNewComment(comment);
+                        onNewComment(comment, post);
                         e.target.reset();
                     }} className="input-group">
                         <input id="btn-input" type="text" name="author" className="form-control input-sm comment-header" placeholder="Type your username here..." />
@@ -66,7 +66,7 @@ const mapStateToProps = ({ comment }) => ({
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onNewComment: (data) => dispatch(addComment(data)),
+        onNewComment: (comment, postId) => dispatch(addComment(comment, postId)),
         onUpvoteComment: (data) => dispatch(upvoteComment(data)),
         onDownvoteComment: (data) => dispatch(downvoteComment(data))
     }

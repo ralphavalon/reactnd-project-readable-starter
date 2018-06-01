@@ -6,10 +6,10 @@ export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 const upvoteScore = ({ voteScore }) => ++voteScore;
 const downvoteScore = ({ voteScore }) => --voteScore;
 
-export function addComment(comment) {
+export function addComment(comment, postId) {
   comment.id = Math.random() * 1000;
   comment.timestamp = Number(new Date());
-  comment.parentId = "8xf0y6ziyjabvozdd253nd";
+  comment.parentId = postId;
   comment.voteScore = 0;
 
   return {
