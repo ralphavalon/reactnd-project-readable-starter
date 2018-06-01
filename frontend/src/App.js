@@ -6,6 +6,7 @@ import Header from './pages/components/header';
 import Sidebar from './pages/components/sidebar';
 import './App.css';
 import AllCategories from './pages/AllCategories';
+import NewPostPage from './pages/NewPostPage';
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <AllCategories />
           )} />
           <Route exact path='/category/:path' component={Category} />
+          <Route exact path='/post_new' component={NewPostPage} />
           <Route exact path='/post/:path' component={PostPage} />
           
         </div>

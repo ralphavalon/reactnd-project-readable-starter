@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import sortBy from 'sort-by';
 import Post from '../post';
 import BoxHeader from '../boxHeader';
@@ -67,9 +68,11 @@ class PostBox extends Component {
 
                 <div className="panel-footer">
                     <div className="row">
-                        <div className="add pull-right">
-                            <i className="fa fa-plus-circle fa-5x"></i>
-                        </div>
+                        <Link to={`/post_new`}>
+                            <div className="add pull-right">
+                                <i className="fa fa-plus-circle fa-5x"></i>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>
@@ -86,7 +89,7 @@ const mapDispatchToProps = (dispatch) => {
         onUpvotePost: (data) => dispatch(upvotePost(data)),
         onDownvotePost: (data) => dispatch(downvotePost(data))
     }
-  }
+}
 
 export default connect(
     mapStateToProps,
