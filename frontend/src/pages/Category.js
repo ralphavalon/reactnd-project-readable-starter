@@ -6,11 +6,11 @@ import '../App.css';
 
 class Category extends Component {
   render() {
-    const { path } = this.props.match.params;
+    const { category } = this.props.match.params;
     return (
       <div>
         <div className="row">
-          <HeaderText title={`Category: ${path}`} />
+          <HeaderText title={`Category: ${category}`} />
         </div>
 
         <div className="row">
@@ -18,7 +18,7 @@ class Category extends Component {
         </div>
 
         <div className="row">
-          <PostBox category={path} />
+          <PostBox category={category} />
         </div>
       </div>
     );

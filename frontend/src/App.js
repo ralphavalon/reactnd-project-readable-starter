@@ -21,7 +21,7 @@ class App extends Component {
           <Route exact path="/" render={() => (
             <AllCategories />
           )} />
-          <Route exact path='/category/:path' component={Category} />
+          <Route exact path='/:category' component={Category} />
           <Route exact path='/post_new' component={NewPostPage} />
           <Route exact path='/post/:path' component={PostPage} />
           
