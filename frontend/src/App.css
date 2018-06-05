@@ -22,6 +22,10 @@
     padding-right: 10px;
 }
 
+.link:hover {
+    cursor: pointer;
+}
+
 .add:hover {
     cursor: pointer;
 }
@@ -54,4 +58,8 @@
     word-wrap: break-word;
     overflow-wrap: break-word;
     width: 6%;
+}
+
+.options {
+    font-size: 85%;
 }

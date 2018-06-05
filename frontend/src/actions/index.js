@@ -2,6 +2,7 @@ export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
+export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 
 const upvoteScore = ({ voteScore }) => ++voteScore;
 const downvoteScore = ({ voteScore }) => --voteScore;
@@ -43,6 +44,13 @@ export function downvoteComment(comment) {
   comment.voteScore = downvoteScore(comment);
   return {
     type: UPDATE_COMMENT,
+    comment,
+  }
+}
+
+export function removeComment(comment) {
+  return {
+    type: REMOVE_COMMENT,
     comment,
   }
 }

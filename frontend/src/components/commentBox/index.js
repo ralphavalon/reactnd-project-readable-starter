@@ -4,12 +4,12 @@ import sortBy from 'sort-by';
 import serializeForm from 'form-serialize';
 import Comment from '../comment';
 import BoxHeader from '../boxHeader';
-import { addComment, upvoteComment, downvoteComment } from '../../actions';
+import { addComment, upvoteComment, downvoteComment, removeComment } from '../../actions';
 
 class CommentBox extends Component {
 
     render() {
-        const { comments, post, onNewComment, onDownvoteComment, onUpvoteComment } = this.props;
+        const { comments, post, onNewComment, onDownvoteComment, onUpvoteComment, onRemoveComment } = this.props;
 
         let showingComments = comments.sort(sortBy('timestamp'));
 
@@ -34,7 +34,8 @@ class CommentBox extends Component {
                                 deleted={comment.deleted}
                                 createdAt={comment.timestamp}
                                 onUpVote={() => onUpvoteComment(comment)}
-                                onDownVote={() => onDownvoteComment(comment)} />
+                                onDownVote={() => onDownvoteComment(comment)}
+                                onRemoveComment={() => onRemoveComment(comment)} />
                         ))}
                     </ul>
                 </div>
@@ -68,7 +69,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onNewComment: (comment, postId) => dispatch(addComment(comment, postId)),
         onUpvoteComment: (data) => dispatch(upvoteComment(data)),
-        onDownvoteComment: (data) => dispatch(downvoteComment(data))
+        onDownvoteComment: (data) => dispatch(downvoteComment(data)),
+        onRemoveComment: (data) => dispatch(removeComment(data))
     }
   }
 

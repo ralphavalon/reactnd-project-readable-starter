@@ -170,6 +170,11 @@ const comment = (state = initialCommentState, action) => {
                 ...state,
                 comments: state.comments.filter((c) => c.id !== action.comment.id).concat([action.comment])
             }
+        case types.REMOVE_COMMENT:
+            return {
+                ...state,
+                comments: state.comments.filter((c) => c.id !== action.comment.id)
+            }
         default:
             return state;
     }
