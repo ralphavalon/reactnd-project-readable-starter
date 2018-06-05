@@ -1,15 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import sortBy from 'sort-by';
-import serializeForm from 'form-serialize';
 import Comment from '../comment';
 import BoxHeader from '../boxHeader';
-import { addComment, upvoteComment, downvoteComment, removeComment } from '../../actions';
+import { addComment, upvoteComment, downvoteComment, updateComment, removeComment } from '../../actions';
+import SendBox from './sendBox';
 
 class CommentBox extends Component {
 
+    selectComment = (comment) => {
+        this.setState({ selectedComment: comment });
+    }
+
+    state = {
+        selectedComment: null
+    }
+
     render() {
-        const { comments, post, onNewComment, onDownvoteComment, onUpvoteComment, onRemoveComment } = this.props;
+        const { comments, post, onNewComment, onDownvoteComment, onUpvoteComment, onEditComment, onRemoveComment } = this.props;
+        const { selectedComment } = this.state;
+        const onSendComment = !!selectedComment ? onEditComment : onNewComment;
 
         let showingComments = comments.sort(sortBy('timestamp'));
 
@@ -35,26 +45,14 @@ class CommentBox extends Component {
                                 createdAt={comment.timestamp}
                                 onUpVote={() => onUpvoteComment(comment)}
                                 onDownVote={() => onDownvoteComment(comment)}
+                                onSelectComment={() => this.selectComment(comment)}
                                 onRemoveComment={() => onRemoveComment(comment)} />
                         ))}
                     </ul>
                 </div>
 
                 <div className="panel-footer">
-                    <form onSubmit={(e) => {
-                        e.preventDefault();
-                        const comment = serializeForm(e.target, { hash: true });
-                        onNewComment(comment, post);
-                        e.target.reset();
-                    }} className="input-group">
-                        <input id="btn-input" type="text" name="author" className="form-control input-sm comment-header" placeholder="Type your username here..." />
-                        <input id="btn-input" type="text" name="body" className="form-control input-sm comment-body" placeholder="Type your message here..." />
-                        <span className="input-group-btn">
-                            <button className="btn btn-warning btn-sm" id="btn-chat">
-                                Send
-                                </button>
-                        </span>
-                    </form>
+                    <SendBox post={post} onSendComment={(comment, post) => { onSendComment(comment, post); this.setState({selectedComment: null}) } } selectedComment={selectedComment} />
                 </div>
             </div>
         );
@@ -68,6 +66,7 @@ const mapStateToProps = ({ comment }) => ({
 const mapDispatchToProps = (dispatch) => {
     return {
         onNewComment: (comment, postId) => dispatch(addComment(comment, postId)),
+        onEditComment: (comment, postId) => dispatch(updateComment(comment, postId)),
         onUpvoteComment: (data) => dispatch(upvoteComment(data)),
         onDownvoteComment: (data) => dispatch(downvoteComment(data)),
         onRemoveComment: (data) => dispatch(removeComment(data))

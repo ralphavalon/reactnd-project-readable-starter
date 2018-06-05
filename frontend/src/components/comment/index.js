@@ -4,7 +4,7 @@ import VoteScore from '../voteScore';
 
 class Comment extends Component {
     render() {
-        const { author, body, voteScore, createdAt, onUpVote, onDownVote, onRemoveComment } = this.props;
+        const { author, body, voteScore, createdAt, onUpVote, onDownVote, onSelectComment, onRemoveComment } = this.props;
 
         return (
             <li className="left clearfix" >
@@ -21,7 +21,8 @@ class Comment extends Component {
 
                     <p>{body}
                     </p>
-                    <p className="options">[Edit] - <a className="link" onClick={onRemoveComment}>[Delete]</a>
+                    <p className="options">
+                        <a className="link" onClick={onSelectComment}>[Edit]</a> - <a className="link" onClick={onRemoveComment}>[Delete]</a>
                     </p>
                     <small className="pull-right text-muted">
                         <i className="fa fa-clock-o fa-fw"></i> {moment(createdAt).fromNow()}

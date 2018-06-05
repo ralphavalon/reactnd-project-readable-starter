@@ -32,6 +32,13 @@ export function addPost(post) {
   }
 }
 
+export function updateComment(comment) {
+  return {
+    type: UPDATE_COMMENT,
+    comment,
+  }
+}
+
 export function upvoteComment(comment) {
   comment.voteScore = upvoteScore(comment);
   return {
