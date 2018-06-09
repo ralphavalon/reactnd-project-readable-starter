@@ -20,7 +20,7 @@ export function addComment(comment, postId) {
 }
 
 export function addPost(post) {
-  post.id = Math.random() * 1000;
+  post.id = Number(new Date()).toString();
   post.timestamp = Number(new Date());
   post.voteScore = 0;
   post.deleted = false;

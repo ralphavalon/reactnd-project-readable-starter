@@ -11,6 +11,7 @@ class PostPage extends Component {
     const { category, post_id } = this.props.match.params;
     const { posts, onUpvotePost, onDownvotePost } = this.props;
     const post = posts.find(function (post) { return post.id === post_id; });
+
     return (
       <div>
         <div className="row">

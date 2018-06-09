@@ -18,7 +18,7 @@ class CategoryBox extends Component {
                             </div>
                         </div>
                     </div>
-                    {name ? <Link to={`/category/${name}`}>
+                    {name ? <Link to={`/${name}`}>
                         <div className="panel-footer">
                             <span className="pull-left">{name}</span>
                             <span className="pull-right"><i className="fa fa-arrow-circle-right"></i></span>

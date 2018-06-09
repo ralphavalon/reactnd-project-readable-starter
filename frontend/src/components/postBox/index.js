@@ -68,7 +68,7 @@ class PostBox extends Component {
 
                 <div className="panel-footer">
                     <div className="row">
-                        <Link to={`/post_new`}>
+                        <Link to={`/readable/post/new`}>
                             <div className="add pull-right">
                                 <i className="fa fa-plus-circle fa-5x"></i>
                             </div>

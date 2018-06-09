@@ -17,7 +17,7 @@ class Post extends Component {
                 </span>
                 <div className="chat-body clearfix">
                     <div className="header">
-                        <Link to={`/post/${id}`} style={{ textDecoration: 'none' }}>
+                        <Link to={`/${category}/${id}`} style={{ textDecoration: 'none' }}>
                             <strong className="primary-font">{title}</strong>
                         </Link>
                         <VoteScore voteScore={voteScore} onUpVote={onUpVote} onDownVote={onDownVote} />
