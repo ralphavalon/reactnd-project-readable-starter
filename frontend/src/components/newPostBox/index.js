@@ -70,7 +70,7 @@ class NewPostBox extends Component {
                     <textarea className="form-control" name="body" rows="3" placeholder="Text/body of the post" value={body} onChange={(e) => this.setState({body: e.target.value})}></textarea>
                 </div>
 
-                <button type="submit" className="btn btn-primary">Create</button>
+                <button type="submit" className="btn btn-primary">{!!selectedPost ? "Update" : "Create"}</button>
 
             </form>
         );
