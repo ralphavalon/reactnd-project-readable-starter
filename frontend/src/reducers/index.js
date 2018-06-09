@@ -3,7 +3,15 @@ import * as types from '../actions'
 
 const initialCategoryState = {
     categories: [{
+        "name": "redux",
+        "number_of_posts": 26
+    },
+    {
         "name": "react",
+        "number_of_posts": 26
+    },
+    {
+        "name": "udacity",
         "number_of_posts": 26
     }]
 }
@@ -145,6 +153,11 @@ const post = (state = initialPostState, action) => {
             return {
                 ...state,
                 posts: state.posts.filter((p) => p.id !== action.post.id).concat([action.post])
+            }
+        case types.REMOVE_POST:
+            return {
+                ...state,
+                posts: state.posts.filter((p) => p.id !== action.post.id)
             }
         default:
             return state;

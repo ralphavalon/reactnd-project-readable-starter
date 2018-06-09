@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import BoxHeader from '../boxHeader';
 import Comment from '../comment';
+import { removePost } from '../../actions';
 
 class PostDetailBox extends Component {
 
     render() {
-        const { post, onUpvotePost, onDownvotePost } = this.props;
+        const { post, onUpvotePost, onDownvotePost, onRemovePost, history } = this.props;
 
         return (
             <div className="panel panel-default">
@@ -23,7 +26,10 @@ class PostDetailBox extends Component {
                             deleted={post.deleted}
                             createdAt={post.timestamp}
                             onUpVote={() => onUpvotePost(post)}
-                            onDownVote={() => onDownvotePost(post)} />
+                            onDownVote={() => onDownvotePost(post)}
+                            onSelectComment={() => history.push(`/readable/post/edit/${post.id}`)}
+                            onRemoveComment={() => { onRemovePost(post); history.push(`/`) } }
+                            />
                     </ul>
                 </div>
             </div>
@@ -31,4 +37,17 @@ class PostDetailBox extends Component {
     }
 }
 
-export default PostDetailBox;
+const mapStateToProps = ({ comment }) => ({
+    comments: comment.comments
+});
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onRemovePost: (data) => dispatch(removePost(data))
+    }
+}
+
+export default withRouter(connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(PostDetailBox));

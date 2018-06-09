@@ -22,6 +22,7 @@ class App extends Component {
             <AllCategories />
           )} />
           <Route exact path='/readable/post/new' component={NewPostPage} />
+          <Route exact path='/readable/post/edit/:post_id' component={NewPostPage} />
           <Route exact path='/:category' component={Category} />
           <Route exact path='/:category/:post_id' component={PostPage} />
           
