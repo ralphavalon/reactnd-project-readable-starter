@@ -8,7 +8,10 @@ import { removePost } from '../../actions';
 class PostDetailBox extends Component {
 
     render() {
-        const { post, onUpvotePost, onDownvotePost, onRemovePost, history } = this.props;
+        let { post } = this.props;
+        const { posts, onUpvotePost, onDownvotePost, onRemovePost, history } = this.props;
+
+        post = posts.find(function (p) { return p.id === post.id; });
 
         return (
             <div className="panel panel-default">
@@ -37,8 +40,8 @@ class PostDetailBox extends Component {
     }
 }
 
-const mapStateToProps = ({ comment }) => ({
-    comments: comment.comments
+const mapStateToProps = ({ post }) => ({
+    posts: post.posts
 });
 
 const mapDispatchToProps = (dispatch) => {
