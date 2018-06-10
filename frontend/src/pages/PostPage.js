@@ -19,7 +19,13 @@ class PostPage extends Component {
         </div>
 
         <div className="row">
-          <PostDetailBox post={post} onUpvotePost={onUpvotePost} onDownvotePost={onDownvotePost} />
+          <PostDetailBox
+            post={post}
+            onUpvotePost={onUpvotePost}
+            onDownvotePost={onDownvotePost} 
+          //onSelectComment={() => history.push(`/readable/post/edit/${post.id}`)}
+            //onRemoveComment={() => { onRemovePost(post); history.push(`/`) } }
+          />
           <CommentBox post={post_id} />
         </div>
       </div>

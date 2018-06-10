@@ -5,7 +5,7 @@ import VoteScore from '../voteScore';
 
 class Post extends Component {
     render() {
-        const { id, author, title, category, commentCount = 0, voteScore, createdAt, onUpVote, onDownVote } = this.props;
+        const { id, author, title, category, commentCount = 0, voteScore, createdAt, onUpVote, onDownVote, onSelectComment, onRemoveComment } = this.props;
 
         return (
             <li className="left clearfix" >
@@ -25,6 +25,9 @@ class Post extends Component {
                     <p><strong>Category:</strong> {category}
                     </p>
                     <p><strong>Comments:</strong> {commentCount}</p>
+                    <p className="options">
+                        <a className="link" onClick={onSelectComment}>[Edit]</a> - <a className="link" onClick={onRemoveComment}>[Delete]</a>
+                    </p>
                     <small className="pull-right text-muted">
                         <i className="fa fa-clock-o fa-fw"></i> {moment(createdAt).fromNow()}
                     </small>

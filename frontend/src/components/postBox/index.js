@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import sortBy from 'sort-by';
 import Post from '../post';
 import BoxHeader from '../boxHeader';
-import { upvotePost, downvotePost } from '../../actions';
+import { upvotePost, downvotePost, removePost } from '../../actions';
 
 class PostBox extends Component {
     state = {
@@ -17,7 +17,7 @@ class PostBox extends Component {
 
     render() {
         const { orderField } = this.state;
-        const { category, posts, onUpvotePost, onDownvotePost } = this.props;
+        const { category, posts, onUpvotePost, onDownvotePost, onRemovePost, history } = this.props;
         let showingPosts
 
         if (orderField) {
@@ -61,7 +61,10 @@ class PostBox extends Component {
                                 deleted={post.deleted}
                                 createdAt={post.timestamp}
                                 onUpVote={() => onUpvotePost(post)}
-                                onDownVote={() => onDownvotePost(post)} />
+                                onDownVote={() => onDownvotePost(post)}
+                                onSelectComment={() => history.push(`/readable/post/edit/${post.id}`)}
+                                onRemoveComment={() => { onRemovePost(post); history.push(`/`) } }
+                                />
                         ))}
                     </ul>
                 </div>
@@ -87,11 +90,12 @@ const mapStateToProps = ({ post }) => ({
 const mapDispatchToProps = (dispatch) => {
     return {
         onUpvotePost: (data) => dispatch(upvotePost(data)),
-        onDownvotePost: (data) => dispatch(downvotePost(data))
+        onDownvotePost: (data) => dispatch(downvotePost(data)),
+        onRemovePost: (data) => dispatch(removePost(data))
     }
 }
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     mapDispatchToProps
-)(PostBox);
+)(PostBox));
