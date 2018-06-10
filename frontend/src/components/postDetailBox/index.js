@@ -34,6 +34,7 @@ class PostDetailBox extends Component {
                             onRemoveComment={() => { onRemovePost(post); history.push(`/`) } }
                             />
                     </ul>
+                    <small>Comments: {post.commentCount}</small>
                 </div>
             </div>
         );

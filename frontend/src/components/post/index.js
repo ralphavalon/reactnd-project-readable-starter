@@ -11,7 +11,7 @@ class Post extends Component {
             <li className="left clearfix" >
 
                 <span className="author-area text-center chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" className="img-circle" />
+                    <img src="/user.png" alt="User Avatar" className="img-circle img" />
                     <p className="author">{author}
                     </p>
                 </span>
