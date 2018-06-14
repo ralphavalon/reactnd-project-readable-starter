@@ -7,10 +7,10 @@ class CategoryBoxes extends Component {
         const { categories = [] } = this.props;
         return (
             <div>
-                <CategoryBox number_of_posts={categories.reduce((previousValue, category) => previousValue + category.number_of_posts, 0)} key="all" />
+                <CategoryBox number_of_posts={categories.reduce((previousValue, category) => previousValue + (category.number_of_posts || 0), 0)} key="all" />
 
                 {categories.map((category) => (
-                    <CategoryBox name={category.name} number_of_posts={category.number_of_posts} key={category.name} />
+                    <CategoryBox name={category.name} number_of_posts={category.number_of_posts || 0} key={category.name} />
                 ))}
 
             </div>

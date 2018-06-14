@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, withRouter } from 'react-router-dom';
 import Category from './pages/Category';
 import PostPage from './pages/PostPage';
 import Header from './pages/components/header';
@@ -7,8 +8,15 @@ import Sidebar from './pages/components/sidebar';
 import './App.css';
 import AllCategories from './pages/AllCategories';
 import NewPostPage from './pages/NewPostPage';
+import { loadInitialData, loadCategories } from './actions';
 
 class App extends Component {
+  componentDidMount() {
+    const { loadPostsData, loadCategoriesData } = this.props;
+    loadPostsData();
+    loadCategoriesData();
+  }
+
   render() {
     return (
       <div id="wrapper">
@@ -32,4 +40,11 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+      loadPostsData: () => dispatch(loadInitialData()),
+      loadCategoriesData: () => dispatch(loadCategories())
+  }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(App));

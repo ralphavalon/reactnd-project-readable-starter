@@ -11,6 +11,7 @@
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "sort-by": "^1.2.0",
     "startbootstrap-sb-admin-2": "^3.3.7"
   },

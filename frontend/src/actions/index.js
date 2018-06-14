@@ -1,9 +1,14 @@
+import * as ReadableAPI from '../utils/ReadableAPI';
+
 export const ADD_POST = 'ADD_POST'
 export const UPDATE_POST = 'UPDATE_POST'
 export const REMOVE_POST = 'REMOVE_POST'
+export const SET_POSTS = 'SET_POSTS'
 export const ADD_COMMENT = 'ADD_COMMENT'
 export const UPDATE_COMMENT = 'UPDATE_COMMENT'
 export const REMOVE_COMMENT = 'REMOVE_COMMENT'
+export const SET_COMMENTS = 'SET_COMMENTS'
+export const SET_CATEGORIES = 'SET_CATEGORIES'
 
 const upvoteScore = ({ voteScore }) => ++voteScore;
 const downvoteScore = ({ voteScore }) => --voteScore;
@@ -63,6 +68,13 @@ export function removeComment(comment) {
   }
 }
 
+export function setCategories(categories) {
+  return {
+    type: SET_CATEGORIES,
+    categories,
+  }
+}
+
 export function upvotePost(post) {
   post.voteScore = upvoteScore(post);
   return {
@@ -92,3 +104,28 @@ export function removePost(post) {
     post,
   }
 }
+
+export function setPosts(posts) {
+  return {
+    type: SET_POSTS,
+    posts,
+  }
+}
+
+export function loadInitialData() {
+  return dispatch => {
+    ReadableAPI.getPosts()
+      .then(posts => {
+        dispatch(setPosts(posts));
+      })
+  }
+};
+
+export function loadCategories() {
+  return dispatch => {
+    ReadableAPI.getCategories()
+      .then(categories => {
+        dispatch(setCategories(categories));
+      })
+  }
+};
