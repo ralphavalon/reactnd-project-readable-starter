@@ -4,13 +4,13 @@ import CategoryBox from '../categoryBox';
 
 class CategoryBoxes extends Component {
     render() {
-        const { categories = [] } = this.props;
+        const { categories = [], posts = [] } = this.props;
         return (
             <div>
-                <CategoryBox number_of_posts={categories.reduce((previousValue, category) => previousValue + (category.number_of_posts || 0), 0)} key="all" />
+                <CategoryBox number_of_posts={posts.length} key="all" />
 
                 {categories.map((category) => (
-                    <CategoryBox name={category.name} number_of_posts={category.number_of_posts || 0} key={category.name} />
+                    <CategoryBox name={category.name} number_of_posts={posts.filter(p => p.category === category.name).length} key={category.name} />
                 ))}
 
             </div>
@@ -18,8 +18,9 @@ class CategoryBoxes extends Component {
     }
 }
 
-const mapStateToProps = ({ category }) => ({
-    categories: category.categories
+const mapStateToProps = ({ category, post }) => ({
+    categories: category.categories,
+    posts: post.posts
 });
 
 export default connect(

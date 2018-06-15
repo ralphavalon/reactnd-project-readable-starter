@@ -25,13 +25,7 @@ export function addComment(comment, postId) {
   }
 }
 
-export function addPost(post) {
-  post.id = Number(new Date()).toString();
-  post.timestamp = Number(new Date());
-  post.voteScore = 0;
-  post.deleted = false;
-  post.commentCount = 0;
-
+export function addPostAction(post) {
   return {
     type: ADD_POST,
     post,
@@ -91,7 +85,7 @@ export function downvotePost(post) {
   }
 }
 
-export function updatePost(post) {
+export function updatePostAction(post) {
   return {
     type: UPDATE_POST,
     post,
@@ -116,7 +110,11 @@ export function loadInitialData() {
   return dispatch => {
     ReadableAPI.getPosts()
       .then(posts => {
-        dispatch(setPosts(posts));
+        ReadableAPI.getCategories()
+          .then(categories => {
+            dispatch(setCategories(categories));
+            dispatch(setPosts(posts));
+          })
       })
   }
 };
@@ -126,6 +124,27 @@ export function loadCategories() {
     ReadableAPI.getCategories()
       .then(categories => {
         dispatch(setCategories(categories));
+      })
+  }
+};
+
+export function addPost(post) {
+  post.id = Number(new Date()).toString();
+  post.timestamp = Number(new Date());
+
+  return dispatch => {
+    ReadableAPI.addPost(post)
+      .then(post => {
+        dispatch(addPostAction(post));
+      })
+  }
+};
+
+export function updatePost(post) {
+  return dispatch => {
+    ReadableAPI.editPost(post)
+      .then(post => {
+        dispatch(updatePostAction(post));
       })
   }
 };

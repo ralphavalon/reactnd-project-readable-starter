@@ -8,7 +8,7 @@ class Post extends Component {
         const { id, author, title, category, commentCount = 0, voteScore, createdAt, onUpVote, onDownVote, onSelectComment, onRemoveComment } = this.props;
 
         return (
-            <li className="left clearfix" >
+            <li className="left clearfix" key={id}>
 
                 <span className="author-area text-center chat-img pull-left">
                     <img src="/user.png" alt="User Avatar" className="img-circle img" />

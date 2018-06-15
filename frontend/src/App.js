@@ -8,13 +8,12 @@ import Sidebar from './pages/components/sidebar';
 import './App.css';
 import AllCategories from './pages/AllCategories';
 import NewPostPage from './pages/NewPostPage';
-import { loadInitialData, loadCategories } from './actions';
+import { loadInitialData } from './actions';
 
 class App extends Component {
   componentDidMount() {
-    const { loadPostsData, loadCategoriesData } = this.props;
-    loadPostsData();
-    loadCategoriesData();
+    const { loadInitialData } = this.props;
+    loadInitialData();
   }
 
   render() {
@@ -42,8 +41,7 @@ class App extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      loadPostsData: () => dispatch(loadInitialData()),
-      loadCategoriesData: () => dispatch(loadCategories())
+      loadInitialData: () => dispatch(loadInitialData())
   }
 }
 
