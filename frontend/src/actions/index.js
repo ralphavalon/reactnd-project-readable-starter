@@ -174,11 +174,9 @@ export function addComment(comment, postId) {
 };
 
 export function getComments(postId) {
-  console.log(JSON.stringify(postId));
   return dispatch => {
     ReadableAPI.getPostComments(postId)
       .then(comments => {
-        console.log(JSON.stringify(comments));
         dispatch(setComments(comments));
       })
   }
