@@ -10,9 +10,6 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT'
 export const SET_COMMENTS = 'SET_COMMENTS'
 export const SET_CATEGORIES = 'SET_CATEGORIES'
 
-const upvoteScore = ({ voteScore }) => ++voteScore;
-const downvoteScore = ({ voteScore }) => --voteScore;
-
 export function addCommentAction(comment) {
   return {
     type: ADD_COMMENT,
@@ -34,16 +31,14 @@ export function updateCommentAction(comment) {
   }
 }
 
-export function upvoteComment(comment) {
-  comment.voteScore = upvoteScore(comment);
+export function upvoteCommentAction(comment) {
   return {
     type: UPDATE_COMMENT,
     comment,
   }
 }
 
-export function downvoteComment(comment) {
-  comment.voteScore = downvoteScore(comment);
+export function downvoteCommentAction(comment) {
   return {
     type: UPDATE_COMMENT,
     comment,
@@ -228,3 +223,21 @@ export function removeComment(comment) {
       })
   }
 };
+
+export function upvoteComment(comment) {
+  return dispatch => {
+    ReadableAPI.voteComment(comment, 'upVote')
+      .then(comment => {
+        dispatch(upvoteCommentAction(comment));
+      })
+  }
+}
+
+export function downvoteComment(comment) {
+  return dispatch => {
+    ReadableAPI.voteComment(comment, 'downVote')
+      .then(comment => {
+        dispatch(downvoteCommentAction(comment));
+      })
+  }
+}

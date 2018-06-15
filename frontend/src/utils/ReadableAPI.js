@@ -98,8 +98,8 @@ export const getComment = (id) =>
     .then(res => res.json())
     .then(data => data)
 
-export const voteComment = (id, option) =>
-  fetch(`${api}/comments/${id}`, {
+export const voteComment = (comment, option) =>
+  fetch(`${api}/comments/${comment.id}`, {
     method: 'POST',
     headers: {
       ...headers,
