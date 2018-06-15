@@ -92,7 +92,7 @@ export function updatePostAction(post) {
   }
 }
 
-export function removePost(post) {
+export function removePostAction(post) {
   return {
     type: REMOVE_POST,
     post,
@@ -145,6 +145,15 @@ export function updatePost(post) {
     ReadableAPI.editPost(post)
       .then(post => {
         dispatch(updatePostAction(post));
+      })
+  }
+};
+
+export function removePost(post) {
+  return dispatch => {
+    ReadableAPI.deletePost(post.id)
+      .then(post => {
+        dispatch(removePostAction(post));
       })
   }
 };
