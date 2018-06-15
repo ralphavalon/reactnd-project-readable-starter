@@ -50,7 +50,7 @@ export function downvoteComment(comment) {
   }
 }
 
-export function removeComment(comment) {
+export function removeCommentAction(comment) {
   return {
     type: REMOVE_COMMENT,
     comment,
@@ -71,16 +71,14 @@ export function setCategories(categories) {
   }
 }
 
-export function upvotePost(post) {
-  post.voteScore = upvoteScore(post);
+export function upvotePostAction(post) {
   return {
     type: UPDATE_POST,
     post,
   }
 }
 
-export function downvotePost(post) {
-  post.voteScore = downvoteScore(post);
+export function downvotePostAction(post) {
   return {
     type: UPDATE_POST,
     post,
@@ -142,6 +140,15 @@ export function addPost(post) {
   }
 };
 
+export function getPost(postId) {
+  return dispatch => {
+    ReadableAPI.getPostDetails(postId)
+      .then(post => {
+        dispatch(updatePostAction(post));
+      })
+  }
+};
+
 export function updatePost(post) {
   return dispatch => {
     ReadableAPI.editPost(post)
@@ -150,6 +157,24 @@ export function updatePost(post) {
       })
   }
 };
+
+export function upvotePost(post) {
+  return dispatch => {
+    ReadableAPI.votePost(post, 'upVote')
+      .then(post => {
+        dispatch(upvotePostAction(post));
+      })
+  }
+}
+
+export function downvotePost(post) {
+  return dispatch => {
+    ReadableAPI.votePost(post, 'downVote')
+      .then(post => {
+        dispatch(downvotePostAction(post));
+      })
+  }
+}
 
 export function removePost(post) {
   return dispatch => {
@@ -169,6 +194,10 @@ export function addComment(comment, postId) {
     ReadableAPI.addComment(comment)
       .then(comment => {
         dispatch(addCommentAction(comment));
+        ReadableAPI.getPostDetails(postId)
+          .then(post => {
+            dispatch(updatePostAction(post));
+          })
       })
   }
 };
@@ -187,6 +216,15 @@ export function updateComment(comment) {
     ReadableAPI.editComment(comment)
       .then(comment => {
         dispatch(updateCommentAction(comment));
+      })
+  }
+};
+
+export function removeComment(comment) {
+  return dispatch => {
+    ReadableAPI.deleteComment(comment.id)
+      .then(comment => {
+        dispatch(removeCommentAction(comment));
       })
   }
 };

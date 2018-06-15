@@ -41,8 +41,8 @@ export const getPostDetails = (id) =>
     .then(res => res.json())
     .then(data => data)
 
-export const votePost = (id, option) =>
-  fetch(`${api}/posts/${id}`, {
+export const votePost = (post, option) =>
+  fetch(`${api}/posts/${post.id}`, {
     method: 'POST',
     headers: {
       ...headers,
