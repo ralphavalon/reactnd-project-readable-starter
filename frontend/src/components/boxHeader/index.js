@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class BoxHeader extends Component {
     render() {
@@ -24,5 +25,9 @@ class BoxHeader extends Component {
         );
     }
 }
+
+BoxHeader.propTypes = {
+    title: PropTypes.string.isRequired
+};
 
 export default BoxHeader;

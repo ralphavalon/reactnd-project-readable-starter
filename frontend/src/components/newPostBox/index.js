@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import serializeForm from 'form-serialize';
 import { addPost, updatePost } from '../../actions';
 import { withRouter } from 'react-router-dom';
@@ -72,6 +73,12 @@ const mapDispatchToProps = (dispatch) => {
         onEditPost: (data) => dispatch(updatePost(data))
     }
 }
+
+NewPostBox.propTypes = {
+    onNewPost: PropTypes.func.isRequired,
+    onEditPost: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired
+};
 
 export default withRouter(connect(
     mapStateToProps,

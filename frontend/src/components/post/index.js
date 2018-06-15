@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import VoteScore from '../voteScore';
 
 class Post extends Component {
@@ -38,5 +39,15 @@ class Post extends Component {
         );
     }
 }
+
+Post.propTypes = {
+    author: PropTypes.string,
+    body: PropTypes.string,
+    voteScore: PropTypes.number,
+    onRemoveComment: PropTypes.func.isRequired,
+    onUpVote: PropTypes.func.isRequired,
+    onDownVote: PropTypes.func.isRequired,
+    onSelectComment: PropTypes.func.isRequired,
+};
 
 export default Post;

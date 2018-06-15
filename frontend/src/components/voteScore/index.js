@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class VoteScore extends Component {
     render() {
@@ -15,5 +16,11 @@ class VoteScore extends Component {
         );
     }
 }
+
+VoteScore.propTypes = {
+    voteScore: PropTypes.number,
+    onUpVote: PropTypes.func.isRequired,
+    onDownVote: PropTypes.func.isRequired
+};
 
 export default VoteScore;

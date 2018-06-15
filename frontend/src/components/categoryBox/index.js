@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class CategoryBox extends Component {
     render() {
@@ -36,5 +37,10 @@ class CategoryBox extends Component {
         );
     }
 }
+
+CategoryBox.propTypes = {
+    name: PropTypes.string,
+    number_of_posts: PropTypes.number.isRequired
+};
 
 export default CategoryBox;

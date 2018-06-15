@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 import VoteScore from '../voteScore';
 
 class Comment extends Component {
@@ -34,5 +35,15 @@ class Comment extends Component {
         );
     }
 }
+
+Comment.propTypes = {
+    author: PropTypes.string,
+    body: PropTypes.string,
+    voteScore: PropTypes.number,
+    onRemoveComment: PropTypes.func.isRequired,
+    onUpVote: PropTypes.func.isRequired,
+    onDownVote: PropTypes.func.isRequired,
+    onSelectComment: PropTypes.func.isRequired,
+};
 
 export default Comment;
