@@ -27,7 +27,7 @@ export function addPostAction(post) {
   }
 }
 
-export function updateComment(comment) {
+export function updateCommentAction(comment) {
   return {
     type: UPDATE_COMMENT,
     comment,
@@ -178,6 +178,15 @@ export function getComments(postId) {
     ReadableAPI.getPostComments(postId)
       .then(comments => {
         dispatch(setComments(comments));
+      })
+  }
+};
+
+export function updateComment(comment) {
+  return dispatch => {
+    ReadableAPI.editComment(comment)
+      .then(comment => {
+        dispatch(updateCommentAction(comment));
       })
   }
 };

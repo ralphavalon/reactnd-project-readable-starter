@@ -110,14 +110,14 @@ export const voteComment = (id, option) =>
     .then(res => res.json())
     .then(data => data)
 
-export const editComment = (id, timestamp, body) =>
-  fetch(`${api}/comments/${id}`, {
+export const editComment = (comment) =>
+  fetch(`${api}/comments/${comment.id}`, {
     method: 'PUT',
     headers: {
       ...headers,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ timestamp, body })
+    body: JSON.stringify(comment)
   })
     .then(res => res.json())
     .then(data => data)
