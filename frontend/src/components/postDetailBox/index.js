@@ -9,9 +9,7 @@ class PostDetailBox extends Component {
 
     render() {
         let { post } = this.props;
-        const { posts, onUpvotePost, onDownvotePost, onRemovePost, history } = this.props;
-
-        post = posts.find(function (p) { return p.id === post.id; });
+        const { onUpvotePost, onDownvotePost, onRemovePost, history } = this.props;
 
         return (
             <div className="panel panel-default">
@@ -41,10 +39,6 @@ class PostDetailBox extends Component {
     }
 }
 
-const mapStateToProps = ({ post }) => ({
-    posts: post.posts
-});
-
 const mapDispatchToProps = (dispatch) => {
     return {
         onRemovePost: (data) => dispatch(removePost(data))
@@ -52,6 +46,6 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default withRouter(connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(PostDetailBox));

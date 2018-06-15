@@ -13,12 +13,7 @@ export const SET_CATEGORIES = 'SET_CATEGORIES'
 const upvoteScore = ({ voteScore }) => ++voteScore;
 const downvoteScore = ({ voteScore }) => --voteScore;
 
-export function addComment(comment, postId) {
-  comment.id = Math.random() * 1000;
-  comment.timestamp = Number(new Date());
-  comment.parentId = postId;
-  comment.voteScore = 0;
-
+export function addCommentAction(comment) {
   return {
     type: ADD_COMMENT,
     comment,
@@ -59,6 +54,13 @@ export function removeComment(comment) {
   return {
     type: REMOVE_COMMENT,
     comment,
+  }
+}
+
+export function setComments(comments) {
+  return {
+    type: SET_COMMENTS,
+    comments,
   }
 }
 
@@ -154,6 +156,30 @@ export function removePost(post) {
     ReadableAPI.deletePost(post.id)
       .then(post => {
         dispatch(removePostAction(post));
+      })
+  }
+};
+
+export function addComment(comment, postId) {
+  comment.id = Math.random() * 1000;
+  comment.timestamp = Number(new Date());
+  comment.parentId = postId;
+
+  return dispatch => {
+    ReadableAPI.addComment(comment)
+      .then(comment => {
+        dispatch(addCommentAction(comment));
+      })
+  }
+};
+
+export function getComments(postId) {
+  console.log(JSON.stringify(postId));
+  return dispatch => {
+    ReadableAPI.getPostComments(postId)
+      .then(comments => {
+        console.log(JSON.stringify(comments));
+        dispatch(setComments(comments));
       })
   }
 };

@@ -3,10 +3,15 @@ import { connect } from 'react-redux';
 import sortBy from 'sort-by';
 import Comment from '../comment';
 import BoxHeader from '../boxHeader';
-import { addComment, upvoteComment, downvoteComment, updateComment, removeComment } from '../../actions';
+import { addComment, getComments, upvoteComment, downvoteComment, updateComment, removeComment } from '../../actions';
 import SendBox from './sendBox';
 
 class CommentBox extends Component {
+
+    componentDidMount() {
+        const { post, getComments } = this.props;
+        getComments(post);
+    }
 
     selectComment = (comment) => {
         this.setState({ selectedComment: comment });
@@ -69,7 +74,8 @@ const mapDispatchToProps = (dispatch) => {
         onEditComment: (comment, postId) => dispatch(updateComment(comment, postId)),
         onUpvoteComment: (data) => dispatch(upvoteComment(data)),
         onDownvoteComment: (data) => dispatch(downvoteComment(data)),
-        onRemoveComment: (data) => dispatch(removeComment(data))
+        onRemoveComment: (data) => dispatch(removeComment(data)),
+        getComments: (data) => dispatch(getComments(data))
     }
   }
 

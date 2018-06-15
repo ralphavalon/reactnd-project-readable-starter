@@ -3,15 +3,20 @@ import { connect } from 'react-redux';
 import HeaderText from '../components/headerText';
 import CommentBox from '../components/commentBox';
 import PostDetailBox from '../components/postDetailBox';
-import { upvotePost, downvotePost } from '../actions';
+import { loadInitialData, upvotePost, downvotePost } from '../actions';
 import '../App.css';
 
 class PostPage extends Component {
-  render() {
-    const { category, post_id } = this.props.match.params;
-    const { posts, onUpvotePost, onDownvotePost } = this.props;
-    const post = posts.find(function (post) { return post.id === post_id; });
 
+  componentDidMount() {
+    loadInitialData();
+  }
+
+  render() {
+    const { post_id } = this.props.match.params;
+    const { posts, onUpvotePost, onDownvotePost } = this.props;
+    const post = posts.find(function (post) { return post.id === post_id; }) || {"title": ""};
+    
     return (
       <div>
         <div className="row">
