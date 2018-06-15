@@ -7,31 +7,16 @@ import { withRouter } from 'react-router-dom';
 class NewPostBox extends Component {
 
     state = {
-        author: '',
-        body: '',
-        category: '',
-        title: ''
+        author: this.props.selectedPost ? this.props.selectedPost.author : '',
+        body: this.props.selectedPost ? this.props.selectedPost.body : '',
+        category: this.props.selectedPost ? this.props.selectedPost.category : '',
+        title: this.props.selectedPost ? this.props.selectedPost.title : ''
     }
 
     render() {
         const { categories = [], onNewPost, onEditPost, selectedPost, history } = this.props;
         let { author, body, category, title } = this.state;
         const onSendPost = !!selectedPost ? onEditPost : onNewPost;
-
-        if(!!selectedPost) {
-            if(!author) {
-                author = selectedPost.author;
-            }
-            if(!body) {
-                body = selectedPost.body;
-            }
-            if(!category) {
-                category = selectedPost.category;
-            }
-            if(!title) {
-                title = selectedPost.title;
-            }
-        }
 
         return (
             <form onSubmit={(e) => {
