@@ -1,14 +1,15 @@
 import * as ReadableAPI from '../utils/ReadableAPI';
-
-export const ADD_POST = 'ADD_POST'
-export const UPDATE_POST = 'UPDATE_POST'
-export const REMOVE_POST = 'REMOVE_POST'
-export const SET_POSTS = 'SET_POSTS'
-export const ADD_COMMENT = 'ADD_COMMENT'
-export const UPDATE_COMMENT = 'UPDATE_COMMENT'
-export const REMOVE_COMMENT = 'REMOVE_COMMENT'
-export const SET_COMMENTS = 'SET_COMMENTS'
-export const SET_CATEGORIES = 'SET_CATEGORIES'
+import {
+  ADD_COMMENT,
+  ADD_POST,
+  UPDATE_COMMENT,
+  UPDATE_POST,
+  REMOVE_COMMENT,
+  REMOVE_POST,
+  SET_CATEGORIES,
+  SET_COMMENTS,
+  SET_POSTS
+} from './types';
 
 export function addCommentAction(comment) {
   return {

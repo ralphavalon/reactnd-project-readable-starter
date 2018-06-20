@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import * as types from '../actions'
+import * as types from '../actions/types'
 
 const initialCategoryState = {
     categories: []
