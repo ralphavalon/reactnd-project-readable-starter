@@ -11,34 +11,42 @@ class NewPostBox extends Component {
         author: this.props.selectedPost ? this.props.selectedPost.author : '',
         body: this.props.selectedPost ? this.props.selectedPost.body : '',
         category: this.props.selectedPost ? this.props.selectedPost.category : '',
-        title: this.props.selectedPost ? this.props.selectedPost.title : ''
+        title: this.props.selectedPost ? this.props.selectedPost.title : '',
+        missingCategory: this.props.selectedPost ? !this.props.selectedPost.category : true
     }
 
     render() {
         const { categories = [], onNewPost, onEditPost, selectedPost, history } = this.props;
-        let { author, body, category, title } = this.state;
+        let { author, body, category, title, missingCategory } = this.state;
         const onSendPost = !!selectedPost ? onEditPost : onNewPost;
 
         return (
             <form onSubmit={(e) => {
                 e.preventDefault();
-                const post = serializeForm(e.target, { hash: true });
-                onSendPost(!!selectedPost ? {
-                    ...selectedPost,
-                    ...post
-                } : post);
+                if (!category) {
 
-                e.target.reset();
-                history.push("/");
+                } else {
+                    const post = serializeForm(e.target, { hash: true });
+                    onSendPost(!!selectedPost ? {
+                        ...selectedPost,
+                        ...post
+                    } : post);
+
+                    e.target.reset();
+                    history.push("/");
+                }
             }}>
 
                 <div className="form-group">
                     <label>Category</label>
-                    <select className="form-control" name="category" value={category} onChange={(e) => this.setState({ category: e.target.value })}>
-                        {categories.map((category) => (
-                            <option value={category.name} key={category.name}>{category.name}</option>
-                        ))}
+                    <select className="form-control" name="category" value={category} onChange={(e) => this.setState({ category: e.target.value, missingCategory: false })}>
+                        {
+                            categories.map((c) => (
+                                <option value={c.name} key={c.name}>{c.name}</option>
+                            ))
+                        }
                     </select>
+                    {missingCategory && <small className="red">You should select one category.</small>}
                 </div>
 
                 <div className="form-group">

@@ -38,7 +38,7 @@
     color: #777777;
 }
 
-.negative-vote-score {
+.negative-vote-score, .red {
     color: #CD5C5C;
 }
 
