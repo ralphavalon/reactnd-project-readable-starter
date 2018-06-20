@@ -57,7 +57,7 @@ class CommentBox extends Component {
                 </div>
 
                 <div className="panel-footer">
-                    <SendBox post={post} onSendComment={(comment, post) => { onSendComment(comment, post); this.setState({selectedComment: null}) } } selectedComment={selectedComment} />
+                    <SendBox post={post} onSendComment={(comment, post) => { onSendComment(comment, post); this.setState({ selectedComment: null }) }} selectedComment={selectedComment} />
                 </div>
             </div>
         );
@@ -77,7 +77,7 @@ const mapDispatchToProps = (dispatch) => {
         onRemoveComment: (data) => dispatch(removeComment(data)),
         getComments: (data) => dispatch(getComments(data))
     }
-  }
+}
 
 export default connect(
     mapStateToProps,

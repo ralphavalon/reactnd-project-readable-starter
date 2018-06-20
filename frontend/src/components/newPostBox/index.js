@@ -34,7 +34,7 @@ class NewPostBox extends Component {
 
                 <div className="form-group">
                     <label>Category</label>
-                    <select className="form-control" name="category" value={category} onChange={(e) => this.setState({category: e.target.value})}>
+                    <select className="form-control" name="category" value={category} onChange={(e) => this.setState({ category: e.target.value })}>
                         {categories.map((category) => (
                             <option value={category.name} key={category.name}>{category.name}</option>
                         ))}
@@ -43,17 +43,17 @@ class NewPostBox extends Component {
 
                 <div className="form-group">
                     <label>Name</label>
-                    <input className="form-control" name="author" placeholder="Your name" value={author} onChange={(e) => this.setState({author: e.target.value})}/>
+                    <input className="form-control" name="author" placeholder="Your name" value={author} onChange={(e) => this.setState({ author: e.target.value })} />
                 </div>
 
                 <div className="form-group">
                     <label>Title</label>
-                    <input className="form-control" name="title" placeholder="Title of the post" value={title} onChange={(e) => this.setState({title: e.target.value})}/>
+                    <input className="form-control" name="title" placeholder="Title of the post" value={title} onChange={(e) => this.setState({ title: e.target.value })} />
                 </div>
 
                 <div className="form-group">
                     <label>Text/Body</label>
-                    <textarea className="form-control" name="body" rows="3" placeholder="Text/body of the post" value={body} onChange={(e) => this.setState({body: e.target.value})}></textarea>
+                    <textarea className="form-control" name="body" rows="3" placeholder="Text/body of the post" value={body} onChange={(e) => this.setState({ body: e.target.value })}></textarea>
                 </div>
 
                 <button type="submit" className="btn btn-primary">{!!selectedPost ? "Update" : "Create"}</button>

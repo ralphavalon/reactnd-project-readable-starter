@@ -10,13 +10,13 @@ class Comment extends Component {
         return (
             <li className="left clearfix" >
                 <span className="author-area text-center chat-img pull-left">
-                <img src="/user.png" alt="User Avatar" className="img-circle img" />
+                    <img src="/user.png" alt="User Avatar" className="img-circle img" />
                     <p className="author">{author}
                     </p>
                 </span>
                 <div className="chat-body clearfix">
                     <div className="header">
-                        <strong className="primary-font" style={{"display": "inline-block"}}></strong>
+                        <strong className="primary-font" style={{ "display": "inline-block" }}></strong>
                         <VoteScore voteScore={voteScore} onUpVote={onUpVote} onDownVote={onDownVote} />
                     </div>
 

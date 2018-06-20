@@ -63,8 +63,8 @@ class PostBox extends Component {
                                 onUpVote={() => onUpvotePost(post)}
                                 onDownVote={() => onDownvotePost(post)}
                                 onSelectComment={() => history.push(`/readable/post/edit/${post.id}`)}
-                                onRemoveComment={() => { onRemovePost(post); history.push(`/`) } }
-                                />
+                                onRemoveComment={() => { onRemovePost(post); history.push(`/`) }}
+                            />
                         ))}
                     </ul>
                 </div>

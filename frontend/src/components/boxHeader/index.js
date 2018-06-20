@@ -15,7 +15,7 @@ class BoxHeader extends Component {
                         </button>
                         <ul className="dropdown-menu pull-right" role="menu">
                             {orderOptions.map((order) => (
-                                <li key={order.value} onClick={() => onOrderClick(order.value)}><a>{ order.value === selectedOrder && <i className="fa fa-check"></i> } {order.text}</a>
+                                <li key={order.value} onClick={() => onOrderClick(order.value)}><a>{order.value === selectedOrder && <i className="fa fa-check"></i>} {order.text}</a>
                                 </li>
                             ))}
                         </ul>

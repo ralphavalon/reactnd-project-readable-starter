@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 class Sidebar extends Component {
-    
+
     state = {
         query: '',
         postsFound: []
@@ -14,8 +14,8 @@ class Sidebar extends Component {
 
         const { posts } = this.props;
 
-        if( !!query.trim() ) {
-            this.setState({ postsFound: posts.filter(post => post.title.toLowerCase().includes(query.trim().toLowerCase()) ) });
+        if (!!query.trim()) {
+            this.setState({ postsFound: posts.filter(post => post.title.toLowerCase().includes(query.trim().toLowerCase())) });
         } else {
             this.setState({ postsFound: [] });
         }
@@ -39,14 +39,14 @@ class Sidebar extends Component {
                             </div>
                         </li>
                         {
-                            postsFound.map((post) => 
-                            <li key={post.id}>
-                                <Link to={`/${post.category}/${post.id}`}>
-                                    <i className="fa fa-comment fa-fw"></i> {post.title}
-                                </Link>
-                            </li>)
+                            postsFound.map((post) =>
+                                <li key={post.id}>
+                                    <Link to={`/${post.category}/${post.id}`}>
+                                        <i className="fa fa-comment fa-fw"></i> {post.title}
+                                    </Link>
+                                </li>)
                         }
-                        
+
                     </ul>
                 </div>
             </div>
@@ -56,8 +56,8 @@ class Sidebar extends Component {
 
 const mapStateToProps = ({ post }) => ({
     posts: post.posts
-  });
+});
 
-  export default connect(
+export default connect(
     mapStateToProps
-  )(Sidebar);
+)(Sidebar);

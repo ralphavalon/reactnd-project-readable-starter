@@ -12,7 +12,6 @@ class CategoryBoxes extends Component {
                 {categories.map((category) => (
                     <CategoryBox name={category.name} number_of_posts={posts.filter(p => p.category === category.name).length} key={category.name} />
                 ))}
-
             </div>
         );
     }

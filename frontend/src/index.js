@@ -9,7 +9,6 @@ import reducer from './reducers';
 import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
-//const store = () => createStore(rootReducer, applyMiddleware(thunk));
 const store = createStore(reducer, applyMiddleware(thunk));
 
 ReactDOM.render(

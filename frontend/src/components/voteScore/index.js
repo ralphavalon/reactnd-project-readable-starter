@@ -11,7 +11,7 @@ class VoteScore extends Component {
                     <span className={"text-center vote-score " + (voteScore === 0 ? 'neutral-vote-score' : voteScore > 0 ? 'positive-vote-score' : 'negative-vote-score')}>{voteScore}</span>
                     <i className="fa fa-chevron-down fa-fw" onClick={onDownVote}></i>
                 </div>
-                
+
             </small>
         );
     }

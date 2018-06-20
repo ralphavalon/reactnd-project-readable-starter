@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import VoteScore from '../voteScore';
 
 class Post extends Component {
+
     render() {
         const { id, author, title, category, commentCount = 0, voteScore, createdAt, onUpVote, onDownVote, onSelectComment, onRemoveComment } = this.props;
 
