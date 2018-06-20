@@ -10,19 +10,26 @@ $ git clone https://github.com/ralphavalon/reactnd-project-readable-starter.git
 
 ### Prerequisites
 
-You'll need to install [NodeJS and NPM](https://nodejs.org/en/download/current/) (they come together when you install Node)
+* [NodeJS and NPM](https://nodejs.org/en/download/current/)
 
 ### Installing
 
-Open a terminal at the project root:
-1. `cd api-server`
-2. `npm install`
-3. `cd ../frontend`
-4. `npm install`
+#### Server
+
+Open a terminal at the project root and run: `cd api-server && npm install`
+
+#### Client
+
+Open a terminal at the project root and run: `cd frontend && npm install`
 
 ## Running the project
 
-1. Open a terminal and go to `./api-server`
-2. Run the server with `node server.js` (keep this terminal open)
-3. Open another terminal and go to the client app source folder `./frontend`
-4. Run the React app with `npm start` (keep this terminal open too)
+### Server
+
+1. Open a terminal and run `cd api-server`
+2. Start the server with the command `node server.js` and keep this terminal open
+
+### Client
+
+1. Open a terminal and run `cd frontend`
+2. Start the react app with the command `npm start` and keep this terminal open
